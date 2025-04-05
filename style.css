@@ -1,0 +1,569 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #222;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid #4ca7af;
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #4ca7af;
+}
+
+.financial-modal {
+  max-width: 600px;
+}
+
+/* Password Input Styles */
+.password-input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  background: #333;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 4px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-password:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-top: 10px;
+  display: none;
+}
+
+.submit-btn {
+  background: #4ca7af;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #3a8a94;
+}
+
+/* Main Application Styles */
+.crud {
+  width: 95%;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.head {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.head h2 {
+  font-family: cursive;
+  color: #4ca7af;
+  margin-bottom: 5px;
+}
+
+.head p {
+  color: #aaa;
+}
+
+/* Input Styles */
+input {
+  width: 100%;
+  height: 35px;
+  outline: none;
+  border: none;
+  background: #111;
+  margin: 8px 0;
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  transition: all 0.3s;
+}
+
+input:focus {
+  background: #000;
+  transform: scale(1.02);
+  border-left: 2px solid #4ca7af;
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.price input {
+  width: calc(25% - 6px);
+}
+
+#total {
+  background: #6868cb;
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+#total::before {
+  content: "المجموع: ";
+}
+
+.details-row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.details-row input {
+  width: calc(35% - 6px);
+}
+
+/* Image Upload Styles */
+.image-upload-label {
+  width: 30%;
+  height: 35px;
+  background: #111;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.image-upload-label:hover {
+  background: #000;
+}
+
+.image-upload-label img {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.image-upload-label p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.hidden-input {
+  display: none;
+}
+
+/* Eyeglass Prescription Table */
+.eyeglass-prescription {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  background: #111;
+}
+
+.eyeglass-prescription th,
+.eyeglass-prescription td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: center;
+}
+
+.eyeglass-prescription th {
+  background-color: #333;
+}
+
+.eyeglass-prescription input {
+  width: 100%;
+  margin: 0;
+  background: #222;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+button {
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  background: #4ca7af;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s;
+  padding: 0 15px;
+  flex: 1;
+  min-width: 120px;
+}
+
+button:hover {
+  background: #1f5459;
+  transform: translateY(-2px);
+}
+
+#convertBtn {
+  background: #4c5eaf;
+}
+
+#convertBtn:hover {
+  background: #3a67b8;
+}
+
+#exportExcel {
+  background: #4caf50;
+}
+
+#exportExcel:hover {
+  background: #3e8e41;
+}
+
+#analyzeBtn {
+  background: #9c27b0;
+}
+
+#analyzeBtn:hover {
+  background: #7b1fa2;
+}
+
+.cancel-btn {
+  background: #f44336 !important;
+  margin-top: 10px;
+}
+
+.cancel-btn:hover {
+  background: #d32f2f !important;
+}
+
+/* Customer Data Table */
+.outputs {
+  margin-top: 30px;
+}
+
+.search-block {
+  margin-bottom: 15px;
+}
+
+.search-block input {
+  width: 100%;
+}
+
+.search-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.search-options button {
+  flex: 1;
+}
+
+.customer-data {
+  max-height: 500px;
+  overflow-y: auto;
+  margin: 15px 0;
+  background: #111;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.customer-data table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customer-data th,
+.customer-data td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.customer-data th {
+  position: sticky;
+  top: 0;
+  background: #111;
+  z-index: 10;
+}
+
+.customer-data img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid #333;
+}
+
+.customer-data img:hover {
+  transform: scale(1.1);
+  border-color: #4ca7af;
+}
+
+.remaining {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+#deleteAll {
+  margin: 15px 0;
+}
+
+#deleteAll button {
+  background: #f44336;
+}
+
+#deleteAll button:hover {
+  background: #d32f2f;
+}
+
+/* Footer Styles */
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  margin-top: 30px;
+}
+
+.copyright p {
+  color: #7b7979;
+}
+
+.developer {
+  display: flex;
+  align-items: center;
+}
+
+.heart {
+  color: brown;
+  margin: 0 3px;
+}
+
+.developer a {
+  color: bisque;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+.developer a:hover {
+  text-decoration: underline;
+}
+
+/* Floating Buttons */
+.floating-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  min-width: 50px;
+  border-radius: 50%;
+  background: #ff9800;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.floating-btn:hover {
+  background: #e68a00;
+  transform: scale(1.1);
+}
+
+#scrollToTopBtn {
+  position: fixed;
+  left: 20px;
+  bottom: 50px;
+  min-width: 50px;
+  display: none;
+  background: #4ca7af;
+  font-size: 16px;
+}
+
+#scrollToTopBtn:hover {
+  background: #1f5459;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4ca7af;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #111;
+}
+
+/* Financial Analysis Styles */
+.time-period-selector {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.time-period-btn {
+  padding: 8px 15px;
+  background: #333;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.time-period-btn.active {
+  background: #4ca7af;
+}
+
+.financial-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: #111;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h4 {
+  color: #4ca7af;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.stat-card p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.close-analysis {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .price input {
+    width: calc(50% - 4px);
+  }
+
+  .details-row input {
+    width: calc(50% - 4px);
+  }
+
+  .action-buttons button {
+    min-width: calc(50% - 4px);
+  }
+
+  .financial-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .price input {
+    width: 100%;
+  }
+
+  .details-row {
+    flex-direction: column;
+  }
+
+  .details-row input,
+  .image-upload-label {
+    width: 100%;
+  }
+
+  .action-buttons button {
+    min-width: 100%;
+  }
+
+  .financial-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-data th,
+  .customer-data td {
+    padding: 5px;
+    font-size: 0.9rem;
+  }
+}

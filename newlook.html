@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEWLOOK - GANO</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="/img/sunglasses_icon.png" />
+  </head>
+  <body>
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal">
+      <div class="modal-content">
+        <h3>أدخل كلمة المرور</h3>
+        <div class="password-input-container">
+          <input type="password" id="passwordInput" placeholder="كلمة المرور" />
+          <span id="togglePassword" class="toggle-password">👁</span>
+        </div>
+        <button id="submitPassword" class="submit-btn">دخول</button>
+        <p id="passwordError" class="error-message">كلمة المرور غير صحيحة</p>
+      </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="modal">
+      <div class="modal-content">
+        <h3>تغيير كلمة المرور</h3>
+        <div class="password-fields">
+          <input
+            type="password"
+            id="currentPassword"
+            placeholder="كلمة المرور الحالية"
+          />
+          <div class="password-input-container">
+            <input
+              type="password"
+              id="newPassword"
+              placeholder="كلمة المرور الجديدة"
+            />
+            <span class="toggle-password" data-target="newPassword">👁</span>
+          </div>
+          <div class="password-input-container">
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="تأكيد كلمة المرور الجديدة"
+            />
+            <span class="toggle-password" data-target="confirmPassword">👁</span>
+          </div>
+        </div>
+        <button id="savePassword" class="submit-btn">حفظ التغييرات</button>
+        <button id="cancelPasswordChange" class="cancel-btn">إلغاء</button>
+        <p id="passwordChangeError" class="error-message"></p>
+      </div>
+    </div>
+
+    <!-- Financial Analysis Modal -->
+    <div id="financialAnalysisModal" class="modal">
+      <div class="modal-content financial-modal">
+        <h3>Financial Analysis</h3>
+        <div class="time-period-selector">
+          <button class="time-period-btn active" data-period="week">
+            This Week
+          </button>
+          <button class="time-period-btn" data-period="month">
+            This Month
+          </button>
+          <button class="time-period-btn" data-period="year">This Year</button>
+        </div>
+
+        <div class="financial-stats">
+          <div class="stat-card">
+            <h4>Total Income</h4>
+            <p id="totalIncome">0 EGP</p>
+          </div>
+          <div class="stat-card">
+            <h4>Total Paid</h4>
+            <p id="totalPaid">0 EGP</p>
+          </div>
+          <div class="stat-card">
+            <h4>Total Remaining</h4>
+            <p id="totalRemaining">0 EGP</p>
+          </div>
+          <div class="stat-card">
+            <h4>Customers</h4>
+            <p id="totalCustomers">0</p>
+          </div>
+        </div>
+
+        <div class="close-analysis">
+          <button id="closeAnalysisBtn" class="cancel-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="crud">
+      <div class="head">
+        <h2>NEWLOOK</h2>
+        <p>CUSTOMER MANAGEMENT SYSTEM</p>
+      </div>
+
+      <div class="inputs">
+        <!-- Customer Information -->
+        <input type="text" id="title" placeholder="الاسم" />
+
+        <!-- Financial Information -->
+        <div class="price">
+          <input
+            type="number"
+            id="price"
+            placeholder="سعر الشمبر"
+            onkeyup="calculateTotal()"
+          />
+          <input
+            type="number"
+            id="taxes"
+            placeholder="سعر العدسات"
+            onkeyup="calculateTotal()"
+          />
+          <input
+            type="number"
+            id="ads"
+            placeholder="دفع"
+            onkeyup="calculateTotal()"
+          />
+          <input
+            type="number"
+            id="rest"
+            value="0"
+            placeholder="الباقي"
+            readonly
+          />
+          <small id="total"></small>
+        </div>
+
+        <!-- Product Details -->
+        <div class="details-row">
+          <input type="text" id="category" placeholder="نوع الشمبر" />
+          <input type="text" id="lensCategory" placeholder="نوع العدسات" />
+          <label for="imageInput" class="image-upload-label">
+            <img id="selectedImage" src="/img/avatar.png" alt=" " />
+            <p>رفع المقاس</p>
+          </label>
+          <input
+            type="file"
+            id="imageInput"
+            accept="image/*"
+            class="hidden-input"
+            onchange="handleImageChange()"
+          />
+        </div>
+
+        <!-- Eyeglass Prescription Table -->
+        <table class="eyeglass-prescription">
+          <tr>
+            <th colspan="1"></th>
+            <th colspan="3">Right</th>
+            <th colspan="3">Left</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Sph</td>
+            <td>Cyl</td>
+            <td>Axis</td>
+            <td>Sph</td>
+            <td>Cyl</td>
+            <td>Axis</td>
+          </tr>
+          <tr>
+            <td>Dist</td>
+            <td><input id="distRightSph" type="text" placeholder="Value" /></td>
+            <td><input id="distRightCyl" type="text" placeholder="Value" /></td>
+            <td>
+              <input id="distRightAxis" type="text" placeholder="Value" />
+            </td>
+            <td><input id="distLeftSph" type="text" placeholder="Value" /></td>
+            <td><input id="distLeftCyl" type="text" placeholder="Value" /></td>
+            <td><input id="distLeftAxis" type="text" placeholder="Value" /></td>
+          </tr>
+          <tr>
+            <td>Near</td>
+            <td><input id="nearRightSph" type="text" placeholder="Value" /></td>
+            <td><input id="nearRightCyl" type="text" placeholder="Value" /></td>
+            <td>
+              <input id="nearRightAxis" type="text" placeholder="Value" />
+            </td>
+            <td><input id="nearLeftSph" type="text" placeholder="Value" /></td>
+            <td><input id="nearLeftCyl" type="text" placeholder="Value" /></td>
+            <td><input id="nearLeftAxis" type="text" placeholder="Value" /></td>
+          </tr>
+          <tr>
+            <td>I PD</td>
+            <td colspan="6">
+              <input id="ipdValue" type="text" placeholder="Value" />
+            </td>
+          </tr>
+        </table>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button id="convertBtn">Take Screen</button>
+          <button id="exportExcel">Export to Excel</button>
+          <button id="analyzeBtn">Financial Analysis</button>
+          <button id="submit">Create</button>
+        </div>
+      </div>
+
+      <!-- Customer Data Table -->
+      <div class="outputs">
+        <div class="search-block">
+          <input
+            type="text"
+            id="search"
+            placeholder="بحث"
+            onkeyup="searchData(this.value)"
+          />
+          <div class="search-options">
+            <button onclick="setSearchMode('title')" id="searchTitle">
+              Search By Name
+            </button>
+            <button onclick="setSearchMode('id')" id="searchID">
+              Search By ID
+            </button>
+          </div>
+        </div>
+
+        <div id="deleteAll"></div>
+
+        <div class="customer-data">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>تاريخ</th>
+                <th>الاسم</th>
+                <th>سعر الشمبر</th>
+                <th>سعر العدسات</th>
+                <th>دفع</th>
+                <th class="remaining">الباقي</th>
+                <th>المجموع</th>
+                <th>نوع الشمبر</th>
+                <th>نوع العدسات</th>
+                <th>المقاس</th>
+                <th>تعديل</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody id="customerTableBody"></tbody>
+          </table>
+          <div id="endRef"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="copyright">
+        <p>&copy; 2024 All rights reserved.</p>
+      </div>
+      <div class="developer">
+        Developed <span class="heart">&#x2764;</span> by
+        <a
+          href="https://www.linkedin.com/in/ahmed-elrefa3y-156688261/"
+          target="_blank"
+          >Ahmed Elrefay</a
+        >
+      </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="اذهب الى الاعلى">↑</button>
+
+    <!-- Change Password Button -->
+    <button id="changePasswordBtn" class="floating-btn" title="Change Password">
+      🔑
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
